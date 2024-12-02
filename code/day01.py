@@ -15,16 +15,16 @@ class Day01(Solution):
 
     def problem_1(self) -> int:
         l1_sorted, l2_sorted = sorted(self.l1), sorted(self.l2)
-        tot_diff = 0
-        for i in range(len(l1_sorted)):
-            tot_diff += abs(l1_sorted[i] - l2_sorted[i])
+        tot_diff = sum(abs(l1_sorted[i] - l2_sorted[i]) 
+                       for i in range(len(l1_sorted)))
         return tot_diff
     
     def problem_2(self) -> int:
         binc = defaultdict(lambda: 0)
-        score = 0
-        for el in self.l2: binc[el] += 1
-        for el in self.l1: score += (el * binc[el])
+        for el in self.l2: 
+            binc[el] += 1
+        score = sum([el * binc[el] 
+                     for el in self.l1])
         return score
 
 if __name__ == '__main__':
