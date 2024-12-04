@@ -11,10 +11,10 @@ class Solution():
         pass
 
     def problem_1(self) -> int:
-        raise NotImplementedError
+        return 0
 
     def problem_2(self) -> int:
-        raise NotImplementedError
+        return 0
     
     def __str__(self):
         str_1 = time.time()
