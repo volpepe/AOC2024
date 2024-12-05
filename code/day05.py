@@ -39,14 +39,36 @@ class Day05(Solution):
                 res += self.get_middle_page(update)
         return res
     
+    def sort(self, update):
+        page_set = set(update)
+        # Work on the subset of rules containing the relationships between items
+        # in the update
+        involved_rules = [rule for rule in self.rules 
+                                if rule[0] in page_set
+                                and rule[1] in page_set]
+        # Sort the page set by checking item by item and how they interact with
+        # other pages through the involved rules
+        sorted_pages, sorted_page_set = [], set()
+        for page in update:
+            idx = 0
+            # Collect the indices of items that are smaller in the order and have already been sorted.
+            # Note that this can also be done by checking items that are greater in order.
+            greater_than = [ rule[0] for rule in involved_rules if rule[1] == page ]
+            more_than_idxs = [ sorted_pages.index(item) for item in greater_than if item in sorted_page_set ]
+            # The page must be placed to the right of the element that is currently considered
+            # the closest smaller
+            if len(more_than_idxs) > 0:
+                idx = max(more_than_idxs) + 1
+            sorted_pages.insert(idx, page)
+            sorted_page_set.add(page)
+        return sorted_pages
 
     def problem_2(self):
         res = 0
-        # for update in self.updates:
-        #     if not self.is_in_correct_order(update):
-        #         update = self.sort(update)
-        #         res += self.get_middle_page(update)
-        #         break
+        for update in self.updates:
+            if not self.is_in_correct_order(update):
+                update = self.sort(update)
+                res += self.get_middle_page(update)
         return res
 
 
