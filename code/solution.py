@@ -1,5 +1,7 @@
 import time
 from typing import List
+
+import numpy as np
 from get_input import get_input
 
 class Solution():
@@ -7,8 +9,13 @@ class Solution():
         self.inp = get_input(day, year)
         self.parse_input()
         
-    def parse_input(self) -> None:
-        pass
+    def parse_input(self, type=None) -> None:
+        if type == 'str_map':
+            self.map = np.array([list(x) for x in self.inp])
+        elif type == 'int_map':
+            self.map = np.array([list(x) for x in self.inp], dtype=int)
+        else:
+            pass
 
     def problem_1(self) -> int:
         return 0

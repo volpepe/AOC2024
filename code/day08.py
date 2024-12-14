@@ -7,7 +7,7 @@ class Day08(Solution):
         super().__init__(day=8, year=2024)
 
     def parse_input(self):
-        self.map = np.array([list(x) for x in self.inp])   
+        super().parse_input(type='str_map') 
 
     def draw_from(self, p1, p2, map, w=2):
         (y1, x1), (y2, x2) = p1, p2

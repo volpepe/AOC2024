@@ -6,7 +6,7 @@ class Day10(Solution):
         super().__init__(day=10, year=2024)
 
     def parse_input(self):
-        self.map = np.array([list(x) for x in self.inp], dtype=int)
+        super().parse_input(type='int_map')
 
     def in_bounds(self, y, x):
         return 0 <= y < self.map.shape[0] and 0 <= x < self.map.shape[1]
