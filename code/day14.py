@@ -1,12 +1,12 @@
 import copy
-import time
-from matplotlib import pyplot as plt
-from tqdm import tqdm
 import re
-import numpy as np
-from scipy.spatial.distance import cdist
+import time
 
+import numpy as np
+from matplotlib import pyplot as plt
+from scipy.spatial.distance import cdist
 from solution import Solution
+from tqdm import tqdm
 
 MAP_SIZE = (101, 103)
 
